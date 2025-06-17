@@ -1,1 +1,3 @@
-# neetcode_150_coding_questions
+# neetcode 150  Coding Questions
+
+#### This repo contains python codes 
