@@ -97,6 +97,21 @@ class Solution:
             strs.append(item)
             i+=count
         return strs
-            
-            
+```
+
+##### 7. Product of Array except self
+```
+class Solution:
+    def productExceptSelf(self, nums):
+        n = len(nums)
+        leftProductArray = [1] * n
+        rightProductArray = [1] * n
+        for i in range(1, n):
+            leftProductArray[i] = leftProductArray[i-1] * nums[i-1]
+        for i in range(n-2, -1, -1):
+            rightProductArray[i] = rightProductArray[i+1] * nums[i+1]
+        res = []
+        for i in range(n):
+            res.append(leftProductArray[i] * rightProductArray[i])
+        return res
 ```
