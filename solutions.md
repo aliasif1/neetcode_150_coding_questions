@@ -52,3 +52,22 @@ class Solution:
             else: dd[signatureTuple] = [item]
         return list(dd.values())
 ```
+
+##### 5. Top K frequent elements
+```
+import heapq
+class Solution:
+    def topKFrequent(self, nums, k):
+        dd = {}
+        for i in nums:
+            freq = dd.get(i, 0)
+            dd[i] = freq+1
+        heap = []
+        for key, freq in dd.items():
+            heapq.heappush(heap, (-freq, key))
+        res = []
+        for i in range(k):
+            _, key = heapq.heappop(heap)
+            res.append(key)
+        return res
+```
