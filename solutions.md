@@ -2,9 +2,9 @@
 ```
 class Solution:
     def hasDuplicate(self, nums):
-        dd = {}
+        numsSet = set()
         for x in nums:
-            if x in dd: return True
-            else: dd[x] = True
+            if x in numsSet: return True
+            numsSet.add(x)
         return False
 ```
