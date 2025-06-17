@@ -115,3 +115,45 @@ class Solution:
             res.append(leftProductArray[i] * rightProductArray[i])
         return res
 ```
+
+##### 8. Valid Sudoku
+```
+class Solution:
+    def isValidSudoku(self, board):
+        # check all rows
+        for row in board:
+            dd = set()
+            for item in row:
+                if item == ".": continue
+                if item in dd: return False
+                else: dd.add(item)
+        # check all columns
+        for i in range(9):
+            dd = set()
+            for j in range(9):
+                item = board[j][i]
+                if item == ".": continue
+                if item in dd: return False
+                else: dd.add(item)
+        # check 3x3 matrices
+        dd = {
+            (0,0): set(),
+            (0,1): set(),
+            (0,2): set(),
+            (1,0): set(),
+            (1,1): set(),
+            (1,2): set(),
+            (2,0): set(),
+            (2,1): set(),
+            (2,2): set()
+        }
+        for i in range(9):
+            for j in range(9):
+                item = board[i][j]
+                if item == ".": continue
+                i_key = i//3
+                j_key = j//3
+                if item in dd[(i_key, j_key)]: return False
+                else: dd[(i_key, j_key)].add(item)
+        return True
+```
