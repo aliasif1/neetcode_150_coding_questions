@@ -24,3 +24,16 @@ class Solution:
             else: dd[char] = freq-1
         if len(dd) !=0: return False
 ```
+
+##### 3. Two Sum
+```
+class Solution:
+    def twoSum(self, nums, target):
+        dd = {}
+        for i in range(len(nums)):
+            val = target-nums[i]
+            if val in dd: return [dd[val], i]
+            else: dd[nums[i]] = i
+        return []
+            
+```
