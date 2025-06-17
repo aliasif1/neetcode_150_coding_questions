@@ -34,6 +34,21 @@ class Solution:
             val = target-nums[i]
             if val in dd: return [dd[val], i]
             else: dd[nums[i]] = i
-        return []
-            
+        return []     
+```
+
+##### 4. Group Anagrams
+```
+class Solution:
+    def groupAnagrams(self, strs):
+        dd = {}
+        for item in strs:
+            signatureArr = [0] * 26
+            for char in item:
+                k = ord(char) - ord('a')
+                signatureArr[k] +=1
+            signatureTuple = tuple(signatureArr)
+            if signatureTuple in dd: dd[signatureTuple].append(item)
+            else: dd[signatureTuple] = [item]
+        return list(dd.values())
 ```
