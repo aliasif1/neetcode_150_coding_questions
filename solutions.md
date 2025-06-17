@@ -71,3 +71,32 @@ class Solution:
             res.append(key)
         return res
 ```
+
+##### 6. Encode and Decode Strings
+```
+class Solution:
+
+    def encode(self, strs):
+        s = ''
+        for item in strs:
+            count = len(item)
+            s += str(count) + '#' + item
+        return s
+
+    def decode(self, s):
+        strs = []
+        i = 0
+        while i < len(s):
+            count = ''
+            while s[i] != '#':
+                count +=s[i]
+                i+=1
+            count = int(count)
+            i+=1
+            item = s[i: i+count]
+            strs.append(item)
+            i+=count
+        return strs
+            
+            
+```
