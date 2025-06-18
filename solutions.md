@@ -172,6 +172,21 @@ class Solution:
                 term = term+1
                 count+=1
             globalMax = max(globalMax, count)
-        return globalMax
-            
+        return globalMax       
+```
+
+##### 10. Valid Palindrome
+```
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        n = len(s)
+        if n <=1: return True
+        filteredString = ''.join(char.lower() for char in s if char.isalnum())
+        left = 0
+        right = len(filteredString) - 1
+        while left < right:
+            if filteredString[left] != filteredString[right]: return False
+            left+=1
+            right-=1
+        return True
 ```
