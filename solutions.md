@@ -248,3 +248,24 @@ class Solution:
             else: right-=1
         return globalMax
 ```
+
+##### 14. Trapping Rain water 
+```
+class Solution:
+    def trap(self, height):
+        left = 0
+        right = len(height) - 1
+        maxLeft = 0
+        maxRight = 0
+        totalWater = 0
+        while left <= right:
+            if maxLeft <= maxRight:
+                totalWater +=max(maxLeft - height[left], 0)
+                maxLeft = max(maxLeft, height[left])
+                left+=1
+            else:
+                totalWater +=max(maxRight - height[right], 0)
+                maxRight = max(maxRight, height[right])
+                right-=1
+        return totalWater
+```
