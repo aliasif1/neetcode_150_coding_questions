@@ -233,3 +233,18 @@ class Solution:
             lastVal = nums[i]
         return res
 ```
+
+##### 13. Container with most water 
+```
+class Solution:
+    def maxArea(self, heights):
+        left = 0
+        right = len(heights) - 1
+        globalMax = 0
+        while left < right:
+            capacity = (right - left) * min(heights[left], heights[right])
+            globalMax = max(globalMax, capacity)
+            if heights[left] <= heights[right]: left+=1
+            else: right-=1
+        return globalMax
+```
