@@ -157,3 +157,21 @@ class Solution:
                 else: dd[(i_key, j_key)].add(item)
         return True
 ```
+
+##### 9. Longest consecutive sequence
+```
+class Solution:
+    def longestConsecutive(self, nums):
+        dd = set(nums)
+        globalMax = 0
+        for val in dd:
+            if val - 1 in dd: continue
+            term = val
+            count = 1
+            while term+1 in dd:
+                term = term+1
+                count+=1
+            globalMax = max(globalMax, count)
+        return globalMax
+            
+```
