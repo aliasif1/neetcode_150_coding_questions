@@ -203,3 +203,33 @@ class Solution:
             elif total < target: left+=1
             else: right-=1
 ```
+
+##### 12. 3Sum 
+```
+class Solution:
+    def threeSum(self, nums):
+        n = len(nums)
+        if n < 3: return []
+        nums.sort(reverse=True)
+        res = []
+        i = 0
+        lastVal = None
+        for i in range(n-2):
+            if nums[i] == lastVal: continue
+            j = i+1
+            k = n-1
+            while j < k:
+                total = nums[i] + nums[j] + nums[k]
+                if total == 0:
+                    res.append([nums[i], nums[j], nums[k]])
+                    j+=1
+                    k-=1
+                    while j < k and nums[j] == nums[j-1]: j+=1
+                    while j < k and nums[k] == nums[k+1]: k-=1
+                elif total > 0:
+                    j+=1
+                else:
+                    k-=1
+            lastVal = nums[i]
+        return res
+```
