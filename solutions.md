@@ -298,3 +298,36 @@ class Solution:
             a,b = b, a+b
         return b
 ```
+
+##### 1-D Dynamic Programing
+##### Min Cost Climbing Stairs (Recursion)
+##### Concept: minCostClimbingStairs(n) = min[cost(n-1) + minCostClimbingStairs(n-1), cost(n-2) + minCostClimbingStairs(n-2)]
+##### base case: minCostClimbingStairs(0) = 0 and minCostClimbingStairs(1) = 0
+```
+class Solution:
+    def minCostClimbingStairs(self, cost) -> int:
+        def recur(i, memo = {}):
+            if i == 0: return 0
+            if i == 1: return 0
+            if i in memo: return memo[i]
+            memo[i] = min( (cost[i-1] + recur(i-1, memo) ), (cost[i-2] + recur(i-2, memo) ) )
+            return memo[i]
+        
+        n = len(cost)
+        if n <= 1: return 0
+        return recur(n)
+```
+
+##### 1-D Dynamic Programing
+##### Min Cost Climbing Stairs (DP Table)
+##### Concept: minCostClimbingStairs(n) = min[cost(n-1) + minCostClimbingStairs(n-1), cost(n-2) + minCostClimbingStairs(n-2)]
+##### base case: minCostClimbingStairs(0) = 0 and minCostClimbingStairs(1) = 0
+```
+class Solution:
+    def minCostClimbingStairs(self, cost) -> int:
+        n = len(cost)
+        a,b = 0, 0
+        for i in range(2, n+1):
+            a,b = b, min((a + cost[i-2]), (b + cost[i-1]))
+        return b
+```
